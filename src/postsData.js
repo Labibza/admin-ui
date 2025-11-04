@@ -1,4 +1,4 @@
-[
+const postsData = [
   {
     "userId": 1,
     "id": 1,
@@ -215,6 +215,6 @@
     "title": "fuga nam accusamus voluptas reiciendis itaque",
     "body": "ad mollitia et omnis minus architecto odit\nvoluptas doloremque maxime aut non ipsa qui alias veniam\nblanditiis culpa aut quia nihil cumque facere et occaecati\nqui aspernatur quia eaque ut aperiam inventore"
   }, 
-]
+];
 
 export default postsData;
