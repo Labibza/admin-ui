@@ -12,7 +12,6 @@ function App() {
           <span className="font-bold">.IO</span>
         </div>
         {/* logo end */}
-        
         {/* form start */}
         <div className="mt-16">
           <form action="">
@@ -60,14 +59,12 @@ function App() {
           </form>
         </div>
         {/* form end */}
-
         {/* text start */}
         <div className="my-9 px-7 flex flex-col justify-center items-center text-xs text-gray-03">
           <div className="border border-gray-05 w-full"></div>
           <div class="px-2 bg-special-mainBg absolute"> or sign in with</div>
         </div>
         {/* text end */}
-
         {/* sign in with google start */}
         <div className="mb-8">
           <button
@@ -122,7 +119,6 @@ function App() {
           </button>
         </div>
         {/* sign in with google end */}
-
         {/* link start */}
         <div className="flex justify-center">
           <a className="text-primary text-sm font-bold">Create an account</a>
