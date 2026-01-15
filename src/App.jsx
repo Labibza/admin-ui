@@ -9,52 +9,93 @@ import BillsPage from "./pages/bills";
 import ExpensesPage from "./pages/expenses";
 import GoalsPage from "./pages/goals";
 import SettingsPage from "./pages/settings";  
-import { Link } from "react-router-dom";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./context/authContext";
 
 function App() {
+  const { user } = useContext(AuthContext);
+
+  const RequireAuth = ({ children }) => {
+    return user ? children : <Navigate to="/login" />;
+  };
+
+  const NotRequireAuth = ({ children }) => {
+    return user ? <Navigate to="/" /> : children;
+  };
   const myRouter = createBrowserRouter([
     {
       path: "/",
-      element: <DashboardPage />,
+      element: (
+        <RequireAuth>
+          <DashboardPage />
+        </RequireAuth>
+      ),
       errorElement: <ErrorPage />,
     },
     {
       path: "/login",
-      element: <SignInPage />,
+      element: (
+        <NotRequireAuth>
+          <SignInPage />
+        </NotRequireAuth>
+      ),
     },
     {
       path: "/register",
-      element: <SignUpPage />,
+      element: (
+        <NotRequireAuth>
+          <SignUpPage />
+        </NotRequireAuth>
+      ),
     },
     {
       path: "/balance",
-      element: <BalancePage />,
+      element: (
+        <RequireAuth>
+          <BalancePage />
+        </RequireAuth>
+      ),
     },
     {
       path: "/transaction",
-      element: <TransactionPage />,
+      element: (
+        <RequireAuth>
+          <TransactionPage />
+        </RequireAuth>
+      ),
     },
     {
       path: "/bill",
-      element: <BillsPage />,
+      element: (
+        <RequireAuth>
+          <BillsPage />
+        </RequireAuth>
+      ),
     },
     {
       path: "/expense",
-      element: <ExpensesPage />,
+      element: ( 
+        <RequireAuth>
+          <ExpensesPage />
+        </RequireAuth>
+      ),
     },
     {
       path: "/goal",
-      element: <GoalsPage />,
+      element: (
+        <RequireAuth>
+          <GoalsPage />
+        </RequireAuth>
+      ),
     },
     {
       path: "/setting",
-      element: <SettingsPage />,
-    },
-    {
-      path: "/",
-      element: <DashboardPage />,
-      errorElement: <ErrorPage />,
+      element: (
+        <RequireAuth>
+          <SettingsPage />
+        </RequireAuth>
+      ),
     },
   ]);
 

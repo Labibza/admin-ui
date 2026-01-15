@@ -3,13 +3,22 @@ import LabeledInput from '../Elements/LabeledInput';
 import CheckBox from '../Elements/CheckBox';
 import Button from '../Elements/Button';
 import { Link } from "react-router-dom";
+import { useState } from 'react';
 
-function FormSignIn() {
+function FormSignIn({ onSubmit }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(email, password);
+  };
+
   return (
     <>
         {/* form start */}
         <div className="mt-16">
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <div className="mb-6">
                 <LabeledInput
                   label="Email Address"
@@ -17,6 +26,8 @@ function FormSignIn() {
                   type="email"
                   placeholder="Enter your email"
                   name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
             </div>
             <div className="mb-6">
@@ -26,6 +37,8 @@ function FormSignIn() {
                   type="password"
                   placeholder="Enter your password"
                   name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)} 
                 />
             </div>
             <div className="mb-3">
@@ -43,7 +56,7 @@ function FormSignIn() {
         {/* text start */}
         <div className="my-9 px-7 flex flex-col justify-center items-center text-xs text-gray-03">
           <div className="border border-gray-05 w-full"></div>
-          <div class="px-2 bg-special-mainBg absolute"> or sign in with</div>
+          <div className="px-2 bg-special-mainBg absolute"> or sign in with</div>
         </div>
         {/* text end */}
         {/* sign in with google start */}
