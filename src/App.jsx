@@ -6,7 +6,7 @@ import DashboardPage from "./pages/dashboard";
 import BalancePage from "./pages/balance";
 import TransactionPage from "./pages/transaction";
 import BillsPage from "./pages/bills";
-import ExpensesPage from "./pages/expenses";
+import ExpensePage from "./pages/expenses";
 import GoalsPage from "./pages/goals";
 import SettingsPage from "./pages/settings";  
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
@@ -77,7 +77,7 @@ function App() {
       path: "/expense",
       element: ( 
         <RequireAuth>
-          <ExpensesPage />
+          <ExpensePage />
         </RequireAuth>
       ),
     },
